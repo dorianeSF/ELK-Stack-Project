@@ -1,0 +1,45 @@
+---
+  - name: Install Elk Playbook
+    hosts: elk
+    become: true
+    tasks:
+    # Set the memory
+    - name: set vm.max_map_count to 262144 in sysctl
+      sysctl:
+        name: vm.max_map_count
+        value: 262144
+        state: present
+        reload: yes
+    # Install docker.io
+    - name: Install docker.io
+      apt:
+        update_cache: yes
+        name: docker.io
+        state: present
+    # Install python3-pip
+    - name: Install python3-pip
+      apt:
+        name: python3-pip
+        state: present
+    # Install docker with the python package
+    - name: Install docker python package
+      pip:
+        name: docker
+        state: present
+    # Installing and launching ELK
+    - name: Install and launch Elk container
+      docker_container:
+        name: elk
+        image: sebp/elk:761
+        state: started
+        restart_policy: always
+    # ports that ELK runs on
+        published_ports:
+         - "5601:5601"
+         - "9200:9200"
+         - "5044:5044"
+    # Enabling docker service
+    - name: Enable docker service
+      systemd:
+        name: docker
+        enabled: yes
