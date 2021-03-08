@@ -3,7 +3,7 @@
 
 This repository is home to the files, images, and instructions used to configure the below network:
 
-Images/DorianeF_ELK-Stack_Diagram.png
+![Image of Elk Stack Diagram](Images/DorianeF_ELK-Stack_Diagram.png)
 
 The successful ELK deployment from these files have been used and tested on Azure. If you would like to recreate the entire deployment of this network, you may do so. Otherwise, you may install an individual piece, such as metricbeat:
 
