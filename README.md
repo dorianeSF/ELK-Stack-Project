@@ -20,16 +20,18 @@ The document which you are reading contains the the following elements:
 
 ### Description of the Topology
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+The purpose of the configured network is to expose a load-balanced and carefully monitored DVWA (D*mn Vulnerable Web Application) instance.
+The use of load balancing ensures a secure application by protecting against distributed denial-of-service (DDoS) attacks, while optimizing traffic through an even load distribution, improving user experience.
+Load balancing protects the availability of a network. Using a jump-box in addition to a load balancer adds an additional layer of security by acting as a single point of entry when connecting to the internet.  
+Our network is protected further by the use of an SSH Key when connecting to the jump-box server. Connecting to your jump-box through SSH provides a simple and secure access point to your server. 
+Overall, these precautions decrease your surface attack area and protect your network's availability.
 
-Load balancing ensures that the application will be highly _____, in addition to restricting _____ to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
+Integrating an ELK server assists users in easily monitoring vulnerable VMs for changes to the logs and system applications. As an analytics tool, ELK Stack aggregates data in a simple form. In addition, ELK stack allows analysts to collect logs from several machines into a single database and quickly execute complex searches.
+- Filebeat is used to monitor the log files
+- Metricbeat collects and records data regarding the metrics of a system or service.. 
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+Please see below for the configuration details of each machine:
 
-The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function | IP Address | Operating System |
