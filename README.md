@@ -32,14 +32,13 @@ Integrating an ELK server assists users in easily monitoring vulnerable VMs for 
 
 Please see below for the configuration details of each machine:
 
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
-
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Name     	| Function          	| IP Address                               	| Operating System 	|
+|----------	|-------------------	|------------------------------------------	|------------------	|
+| Jump Box 	| Gateway           	| Public: 137.117.96.250 Private: 10.0.0.4 	| Linux            	|
+| ELK-1    	| Monitor/Analytics 	| Public: 52.184.224.203 Private: 10.1.0.5 	| Linux            	|
+| Web-1    	| Web server        	| Public: N/A Private: 10.0.0.7            	| Linux            	|
+| Web-2    	| Web server        	| Public: N/A Private: 10.0.0.6            	| Linux            	|
+| Web-3    	| Web server        	| Public: N/A Private: 10.0.0.8            	| Linux            	|
 
 ### Access Policies
 
@@ -97,3 +96,4 @@ _TODO: Answer the following questions to fill in the blanks:_
 - _Which URL do you navigate to in order to check that the ELK server is running?
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+SAMPLE URL:  [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables)
