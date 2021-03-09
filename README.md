@@ -15,7 +15,7 @@ The document which you are reading contains the the following elements:
 - ELK Configuration
   - Beats in use
   - Machines that are monitored
-- Instructiosn to use the Ansible Build
+- Instructions to use the Ansible Build
 
 
 ### Description of the Topology
@@ -35,19 +35,18 @@ Please see below for the configuration details of each machine:
 | Name     	| Function          	| IP Address                               	| Operating System 	|
 |----------	|-------------------	|------------------------------------------	|------------------	|
 | Jump Box 	| Gateway           	| Public: 137.117.96.250 Private: 10.0.0.4 	| Linux            	|
-| ELK-1    	| Monitor/Analytics 	| Public: 52.184.224.203 Private: 10.1.0.5 	| Linux            	|
+| ELK-1    	| Monitoring/Analytics 	| Public: 52.184.224.203 Private: 10.1.0.5 	| Linux            	|
 | Web-1    	| Web server        	| Public: N/A Private: 10.0.0.7            	| Linux            	|
 | Web-2    	| Web server        	| Public: N/A Private: 10.0.0.6            	| Linux            	|
 | Web-3    	| Web server        	| Public: N/A Private: 10.0.0.8            	| Linux            	|
 
 ### Access Policies
+The machines created within the internal network have not been exposed to the public Internet.
 
-The machines on the internal network are not exposed to the public Internet. 
+With this configuration, only the Jump Box machine is able to accept Internet connections. Therefore, access to this machine is only allowed from my host machine's public IP address.   
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
-
-Machines within the network can only be accessed by _____.
+Machines within the network can only be accessed by the Jump Box Provisioner.
+ELK-1 may only be accessed by 
 - _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
 
 A summary of the access policies in place can be found in the table below.
@@ -59,9 +58,7 @@ A summary of the access policies in place can be found in the table below.
 |          |                     |                      |
 
 ### Elk Configuration
-
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+The configuration of the ELK machine was automated through Ansible. The lack of manual configuration is advantageous since this allows for consistent and quick deployment across multiple machines. 
 
 The playbook implements the following tasks:
 - _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
