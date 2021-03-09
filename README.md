@@ -31,14 +31,14 @@ Integrating an ELK server assists users in easily monitoring vulnerable VMs for 
 - Metricbeat collects and records data regarding the metrics of a system or service.. 
 
 Please see below for the configuration details of each machine:
-
-| Name     	| Function          	| IP Address                               	| Operating System 	|
-|----------	|-------------------	|------------------------------------------	|------------------	|
-| Jump Box 	| Gateway           	| Public: 137.117.96.250 Private: 10.0.0.4 	| Linux            	|
-| ELK-1    	| Monitoring/Analytics 	| Public: 52.184.224.203 Private: 10.1.0.5 	| Linux            	|
-| Web-1    	| Web server        	| Public: N/A Private: 10.0.0.7            	| Linux            	|
-| Web-2    	| Web server        	| Public: N/A Private: 10.0.0.6            	| Linux            	|
-| Web-3    	| Web server        	| Public: N/A Private: 10.0.0.8            	| Linux            	|
+| Name       	| Function          	| IP Address                               	| Operating System 	|
+|------------	|-------------------	|------------------------------------------	|------------------	|
+| Jump Box   	| Gateway           	| Public: 137.117.96.250 Private: 10.0.0.4 	| Linux            	|
+| ELK-1      	| Monitor/Analytics 	| Public: 52.184.224.203 Private: 10.1.0.5 	| Linux            	|
+| Web-1      	| Web server        	| Public: N/A Private: 10.0.0.7            	| Linux            	|
+| Web-2      	| Web server        	| Public: N/A Private: 10.0.0.6            	| Linux            	|
+| Web-3      	| Web server        	| Public: N/A Private: 10.0.0.8            	| Linux            	|
+| Pentest-LB 	| Load Balancer     	| Public: 52.142.14.25 Private: N/A        	| N/A              	|
 
 ### Access Policies
 The machines created within the internal network have not been exposed to the public Internet.
