@@ -86,7 +86,9 @@ These Beats allow us to collect the following information from each machine:
 - Below is an example of monitoring Syslogs, or System Logging Protocol, through Filebeat:
 ![Filebeat syslog example](Images/DorianeF_Filebeat_Syslog_Example.png)
 - Syslog beats collect and aggregate data for system  logs and event messages that are sent to the syslog server.
-
+- Metricbeat...
+- Below is an example of...
+![Metricbeat system example] (Images/DorianeF_Metricbeat_System_Example.png)
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
