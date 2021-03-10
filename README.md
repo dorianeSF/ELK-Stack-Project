@@ -28,7 +28,7 @@ Overall, these precautions decrease your surface attack area and protect your ne
 
 Integrating an ELK server assists users in easily monitoring vulnerable VMs for changes to the logs and system applications. As an analytics tool, ELK Stack aggregates data in a simple form. In addition, ELK stack allows analysts to collect logs from several machines into a single database and quickly execute complex searches.
 - Filebeat is used to monitor the log files
-- Metricbeat collects and records data regarding the metrics of a system or service.. 
+- Metricbeat collects and records data regarding the metrics of a system or service. 
 
 Please see below for the configuration details of each machine:
 | Name       	| Function          	| IP Address                               	| Operating System 	|
@@ -46,16 +46,17 @@ The machines created within the internal network have not been exposed to the pu
 With this configuration, only the Jump Box machine is able to accept Internet connections. Therefore, access to this machine is only allowed from my host machine's public IP address.   
 
 Machines within the network can only be accessed by the Jump Box Provisioner.
-ELK-1 may only be accessed by 
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+ELK-1 may only be accessed through the Jump Box with SSH or through my host machine's public IP with TCP on port 5601.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name     	| Publicly Accessible 	| Allowed IP Addresses               	|
+|----------	|---------------------	|------------------------------------	|
+| Jump Box 	| Yes - SSH           	| Host Machine Personal IP           	|
+| ELK-1    	| Yes - HTTP          	| Host Machine Personal IP, 10.0.0.4 	|
+| Web-1    	| No                  	| 10.0.0.6, 10.0.0.8, 10.0.0.4       	|
+| Web-2    	| No                  	| 10.0.0.7, 10.0.0.8, 10.0.0.4       	|
+| Web-3    	| No                  	| 10.0.0.7, 10.0.0.6, 10.0.0.4       	|
 
 ### Elk Configuration
 The configuration of the ELK machine was automated through Ansible. The lack of manual configuration is advantageous since this allows for consistent and quick deployment across multiple machines. 
