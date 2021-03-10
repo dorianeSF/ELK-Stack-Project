@@ -62,13 +62,14 @@ A summary of the access policies in place can be found in the table below.
 The configuration of the ELK machine was automated through Ansible. The lack of manual configuration is advantageous since this allows for consistent and quick deployment across multiple machines. 
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Configures the VM to use more memory
+- Installs docker.io and python3-pip
+- Configures the container to start with port mappings: 5601, 9200, 5044
+- Launches the docker service on boot
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![Image of successful ELK deployment](Images/DorianeF_Successful_ELK_Instance.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
