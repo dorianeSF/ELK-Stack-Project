@@ -99,15 +99,33 @@ The Ansible control node must already be properly configured in order to use the
 - In the same hosts file, specify the the groups that will be included in the playbook:
 ![Image of groups in the hosts file](Images/DorianeF_Groups_in_Hosts_File.png)
 - Run the playbook, and navigate to command line to SSH into the ELK server to check that the installation worked as expected.
--- Playbook: [Install Elk Playbook](Ansible/ansible_playbooks/install-elk.yml)
---- Copied to: 
-- Update ____________ to make Ansible run the playbook on a specific machine
--- To check if your playbook is running, go to:
+- After testing your ability to SSH into the ELK server, navigate to your Kibana in your web browser with the following syntax: http://ELK_Public_IP:5601/app/kibana 
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+### Playbook Summary
+- Playbook: [install-elk.yml](Ansible/ansible_playbooks/install-elk.yml)
+- Copied to: etc/ansible/roles/install-elk.yml
+- Update the hosts file in etc/ansible/hosts to make Ansible run the playbook on a specified machine. Separate your machines into 2 groups to distinguish between the machines that will be used for your ELK server deploment and Filebeat installation.
+- To ensure our ELK server is running, navigate to: http://52.184.224.203:5601/app/kibana or http://ELK_Public_IP:5601/app/kibana 
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
-SAMPLE URL:  [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables)
+### Running Each Playbook
+## ELK
+- Download the playbook: curl https://raw.githubusercontent.com/dorianeSF/ELK-Stack-Project/main/Ansible/ansible_playbooks/install-elk.yml > /etc/ansible/roles/install-elk.yml
+- Edit the playbook: nano /etc/ansible/roles/install-elk.yml
+- Configure Ansible's inventory in the hosts file: nano /etc/ansible/hosts
+- Run the playbook to launch the container: ansible-playbook install-elk.yml
+
+## Filebeat
+- Download the playbook: curl https://raw.githubusercontent.com/dorianeSF/ELK-Stack-Project/main/Ansible/ansible_playbooks/filebeat-playbook.yml > /etc/ansible/filebeat-playbook.yml
+- Edit the playbook: nano /etc/ansible/roles/filebeat-playbook.yml
+- Download the config file: curl https://raw.githubusercontent.com/dorianeSF/ELK-Stack-Project/main/Ansible/config_files/filebeat-config.yml > /etc/ansible/files/filebeat-config.yml
+- Edit the config file: nano /etc/ansible/files/filebeat-config.yml
+- Under "output.elasticsearch:" enter your ELK Public IP in place of the hosts IP
+- Run the playbook: ansible-plabook filebeat-playbook.yml
+
+## Metricbeat
+- Download the playbook: curl https://raw.githubusercontent.com/dorianeSF/ELK-Stack-Project/main/Ansible/ansible_playbooks/metricbeat-playbook.yml > /etc/ansible/roles/metricbeat-playbook.yml
+- Edit the playbook: nano /etc/ansible/roles/metricbeat-playbook.yml
+- Download the config file: curl https://raw.githubusercontent.com/dorianeSF/ELK-Stack-Project/main/Ansible/config_files/metricbeat-config.yml > /etc/ansible/files/metricbeat-config.yml
+- Edit the config file: nano /etc/ansible/files/metricbeat-config.yml
+- Under "output.elasticsearch:" enter your ELK Public IP in place of the hosts IP
+- Run the playbook: ansible-playbook metricbeat-playbook.yml
