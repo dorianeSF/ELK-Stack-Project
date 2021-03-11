@@ -88,7 +88,7 @@ These Beats allow us to collect the following information from each machine:
 - Syslog beats collect and aggregate data for system  logs and event messages that are sent to the syslog server.
 - METRICBEAT: Collects and allows the aggregation of metrics from an operating system and the services running on the server. 
 - Below is an example of monitoring System metrics such as CPU, memory, and network through Metricbeat:
-![Metricbeat system example] (Images/DorianeF_Metricbeat_System_Example.png)
+![Metricbeat system example](Images/DorianeF_Metricbeat_System_Example.png)
 
 ### Using the Playbook
 The Ansible control node must already be properly configured in order to use the playbook. Assuming you have such a control node provisioned, you may take the following steps to run the Playbook: 
@@ -97,8 +97,14 @@ The Ansible control node must already be properly configured in order to use the
 - Copy the playbook files to the Ansible container: /etc/ansible
 - Add your the IP of your VM to the Ansible hosts file: /etc/ansible/hosts
 - In the same hosts file, specify the the groups that will be included in the playbook:
-
+![Image of groups in the hosts file](Images/DorianeF_Groups_in_Hosts_File.png)
 - Run the playbook, and navigate to command line to SSH into the ELK server to check that the installation worked as expected.
+
+Playbook: [Install Elk Playbook](Ansible/ansible_playbooks/install-elk.yml)
+- Copied to: 
+
+To check if your playbook is running, go to:
+-
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
