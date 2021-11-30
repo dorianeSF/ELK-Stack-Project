@@ -1,5 +1,5 @@
 ### Ansible Directory
-This directory contains the scripts used to install ELK, Filebeat, and Metricbeat
+This directory contains the scripts used to install ELK, Filebeat, and Metricbeat.
 This directory is divided into two main folders:
 - [ansible_playbooks](ansible_playbooks)
   - These are the playbooks I created to install the ELK-Stack, Filebeat, and Metricbeat.
