@@ -1,78 +1,86 @@
 # ELK-Stack
 ## Automated ELK Stack Deployment
 
-This repository is home to the files, images, and instructions used to configure the below network:
+This repository dodcuments files, images, and instructions used in configuring the below network:
 
 ![Image of Elk Stack Diagram](Images/DorianeF_ELK-Stack_Diagram.png)
 
-The successful ELK deployment from these files have been used and tested on Azure. If you would like to recreate the entire deployment of this network, you may do so. Otherwise, you may install an individual piece, such as metricbeat:
+Successful instances of ELK deployment from these files have been used and tested with Azure. You may recreate this network deployment. Otherwise, you may install an individual piece, such as metricbeat:
 
 [metricbeat-playbook.yml](Ansible/ansible_playbooks/metricbeat-playbook.yml)
 
-This outline contains the following elements:
+This outline contains:
 - A description of the network Topology
-- Access Policies
+- Access policies
 - ELK Configuration
   - Beats in use
-  - Machines that are monitored
-- Instructions to use the Ansible Build
+  - Monitored machines
+- Instructions for using the Ansible Build
 
 
 ### Description of the Topology
 
-The purpose of the configured network is to expose a load-balanced and carefully monitored DVWA (D*mn Vulnerable Web Application) instance.
-The use of load balancing ensures a secure application by protecting against distributed denial-of-service (DDoS) attacks, while optimizing traffic through an even load distribution, improving user experience.
-Therefore, load balancing protects the availability of a network. Using a jump-box in addition to a load balancer adds an additional layer of security by acting as a single point of entry when connecting to the internet.  
-Our network is protected further by the use of an SSH Key when connecting to the jump-box server. Connecting to your jump-box through SSH provides a simple and secure access point to your server. 
-Overall, these precautions decrease your surface attack area and protect your network's availability.
+The configured network exposes a load-balanced, carefully monitored DVWA (D*** Vulnerable Web Application) instance. 
+Load balancing ensures a secure application by: 
+- Protecting against DDOS (distributed denial of service) attacks
+- Optimizing traffic through even load distribution
+- Improving user experience
+- Protecting network availability
 
-Integrating an ELK server assists users in easily monitoring vulnerable VMs for changes to the logs and system applications. As an analytics tool, ELK Stack aggregates data in a simple form. In addition, ELK Stack allows analysts to collect logs from several machines into a single database and quickly execute complex searches.
-- Filebeat is used to monitor the log files.
-- Metricbeat collects and records data regarding the metrics of a system or service. 
+A jump-box may be used in addition to a load balancer, to add an additional layer of security. The jump-box does this by acting as a single point of entry when connecting to the internet. 
 
-Please see below for the configuration details of each machine:
+This network is protected further by use of an SSH key, when connecting to the jump-box server. Connecting to through SSH provides a simple and secure access point to your server. 
+
+These precautions decrease surface attack area and protect network availability.
+
+An integrated ELK server assists in easily monitoring vulnerable VMs (virtual machines) for changes  to logs and system applications. As an analytics tool, ELK Stack aggregates data in a simple form and allows analysts to collect logs from several machines, into a single database. Analysts can quickly execute complex searches.
+
+Filebeat is used to monitor log files.
+Metricbeat collects and records data regarding the metrics of a system or service.
+
+Machine configurations:
 
 | Name       	| Function          	| IP Address                               	| Operating System 	|
 |------------	|-------------------	|------------------------------------------	|------------------	|
-| Jump Box   	| Gateway           	| Public: 137.117.96.250 Private: 10.0.0.4 	| Linux            	|
-| ELK-1      	| Monitor/Analytics 	| Public: 52.184.224.203 Private: 10.1.0.5 	| Linux            	|
+| Jump Box   	| Gateway           	| Public: REDACTED Private: REDACTED	| Linux            	|
+| ELK-1      	| Monitor/Analytics 	| Public: REDACTED Private: REDACTED 	| Linux            	|
 | Web-1      	| Web server        	| Public: N/A Private: 10.0.0.7            	| Linux            	|
 | Web-2      	| Web server        	| Public: N/A Private: 10.0.0.6            	| Linux            	|
 | Web-3      	| Web server        	| Public: N/A Private: 10.0.0.8            	| Linux            	|
-| Pentest-LB 	| Load Balancer     	| Public: 52.142.14.25 Private: N/A        	| N/A              	|
+| Pentest-LB 	| Load Balancer     	| Public: REDACTED Private: N/A        	| N/A              	|
 
 ### Access Policies
-The machines created within the internal network have not been exposed to the public Internet.
+Machines created within the internal network have not been exposed to the public Internet.
 
-With this configuration, only the Jump Box machine is able to accept Internet connections. Therefore, access to this machine is only allowed from my host machine's public IP address.   
+In this configuration, only the Jump Box machine is able to accept Internet connections. Machine access is only allowed from the creator's host machine public IP address.   
 
 Machines within the network can only be accessed by the Jump Box Provisioner.
-ELK-1 may only be accessed through the Jump Box with SSH or through my host machine's public IP with TCP on port 5601.
+ELK-1 may only be accessed through the Jump Box with SSH or through the host machine public IP with TCP over port 5601.
 
-A summary of the access policies in place can be found in the table below.
+Access policies:
 
 | Name     	| Publicly Accessible 	| Allowed IP Addresses               	|
 |----------	|---------------------	|------------------------------------	|
 | Jump Box 	| Yes - SSH           	| Host Machine Personal IP           	|
-| ELK-1    	| Yes - HTTP          	| Host Machine Personal IP, 10.0.0.4 	|
-| Web-1    	| No                  	| 10.0.0.6, 10.0.0.8, 10.0.0.4       	|
-| Web-2    	| No                  	| 10.0.0.7, 10.0.0.8, 10.0.0.4       	|
-| Web-3    	| No                  	| 10.0.0.7, 10.0.0.6, 10.0.0.4       	|
+| ELK-1    	| Yes - HTTP          	| Host Machine Personal IP, REDACTED 	|
+| Web-1    	| No                  	| 10.0.0.6, 10.0.0.8, REDACTED       	|
+| Web-2    	| No                  	| 10.0.0.7, 10.0.0.8, REDACTED       	|
+| Web-3    	| No                  	| 10.0.0.7, 10.0.0.6, REDACTED       	|
 
 ### Elk Configuration
-The configuration of the ELK machine was automated through Ansible. The lack of manual configuration is advantageous since this allows for consistent and quick deployment across multiple machines. 
+ELK machine configuration was automated through Ansible. Automation is advantageous, as this allows for consistent and quick deployment across multiple machines. 
 
-The playbook implements the following tasks:
-- Configures the VM to use more memory
-- Installs docker.io and python3-pip
-- Configures the container to start with port mappings: 5601, 9200, 5044
-- Launches the docker service on boot
+The playbook includes the tasks to: 
+- Configure the VM to use more memory
+- Install docker.io and python3-pip
+- Configure the container to start with port mappings: 5601, 9200, 5044
+- Launch the docker service on boot
 
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+An image displaying the results of running `docker ps` after successful ELK configuration:
 
 ![Image of successful ELK deployment](Images/DorianeF_Successful_ELK_Instance.png)
 
-### Target Machines & Beats
+### Target machines & beats
 The ELK server is configured to monitor the following machines:
 - 10.0.0.6
 - 10.0.0.7
@@ -82,63 +90,68 @@ We have installed the following Beats on these machines:
 - Filebeat
 - Metricbeat
 
-These Beats allow us to collect the following information from each machine:
-- FILEBEAT: Collects log files such as those generated by Apache, Microsoft Azure tools, or MySQL databases. 
-  - Syslog beats collect and aggregate data for system logs and event messages that are sent to the syslog server.
-  - Below is an example of monitoring Syslogs, or System Logging Protocol, through Filebeat:
+Beats allow us to collect information from each machine.
+
+FILEBEAT: Collects log files such as those generated by Apache, Microsoft Azure tools, or MySQL databases. 
+- Syslog beats collect and aggregate data for system logs and event messages that are sent to the syslog server.
+- Below is an example of monitoring Syslogs, or System Logging Protocol, through Filebeat:
+
 ![Filebeat syslog example](Images/DorianeF_Filebeat_Syslog_Example.png)
-- METRICBEAT: Collects and allows the aggregation of metrics from an operating system and the services running on the server. 
-  - Below is an example of monitoring System metrics such as CPU, memory, and network through Metricbeat:
+
+METRICBEAT: Collects and allows the aggregation of metrics from an operating system and the services running on the server. 
+- Below is an example of monitoring System metrics such as CPU, memory, and network through Metricbeat:
+
 ![Metricbeat system example](Images/DorianeF_Metricbeat_System_Example.png)
 
 ### Using the Playbook
-The Ansible control node must already be properly configured in order to use the playbook. Assuming you have such a control node provisioned, you may take the following steps to run the Playbook: 
+The Ansible control node must already be properly configured in order to use the playbook. Assuming the control node is provisioned, you may take the following steps to run the Playbook: 
 
-- SSH into the control node
-- Copy the playbook files to the Ansible container: /etc/ansible/roles/install-elk.yml
-- Add your the IP of your VM to the Ansible hosts file: /etc/ansible/hosts
-- In the same hosts file, specify the the groups that will be included in the playbook:
-![Image of groups in the hosts file](Images/DorianeF_Groups_in_Hosts_File.png)
-- Run the playbook, and navigate to command line to SSH into the ELK server to check that the installation worked as expected.
-- Navigate to your Kibana in your web browser with the following syntax: http://ELK_Public_IP:5601/app/kibana 
+1. SSH into the control node
+2. Copy the playbook files to the Ansible container: /etc/ansible/roles/install-elk.yml
+3. Add your the IP of your VM to the Ansible hosts file: /etc/ansible/hosts
+4. In the same hosts file, specify the the groups that will be included in the playbook:
+4#. ![Image of groups in the hosts file](Images/DorianeF_Groups_in_Hosts_File.png)
+5. Run the playbook, and navigate to command line to SSH into the ELK server to check that the installation worked as expected.
+6. Navigate to your Kibana in your web browser with the following syntax: http://ELK_Public_IP:5601/app/kibana 
 
-### Playbook Summary
-- Playbook: [install-elk.yml](Ansible/ansible_playbooks/install-elk.yml)
-- Copied to: etc/ansible/roles/install-elk.yml
-- Update the hosts file in etc/ansible/hosts to make Ansible run the playbook on a specified machine. Separate your machines into 2 groups to distinguish between the machines that will be used for your ELK server deploment and Filebeat installation.
-- To ensure our ELK server is running, navigate to: http://52.184.224.203:5601/app/kibana or http://ELK_Public_IP:5601/app/kibana 
+### Playbook summary
+Playbook: [install-elk.yml](Ansible/ansible_playbooks/install-elk.yml)
+Copied to: etc/ansible/roles/install-elk.yml
 
-## Running Each Playbook
+Update the hosts file in etc/ansible/hosts to make Ansible run the playbook on a specified machine. Separate machines into 2 groups to distinguish between the machines that will be used for your ELK server deployment, and Filebeat installation.
+- Test ELK server availability at: http://52.184.224.203:5601/app/kibana or http://ELK_Public_IP:5601/app/kibana 
+
+## Running the Playbooks
 ### ELK
-- Download the playbook: 
+- Download the Playbook: 
   - curl https://raw.githubusercontent.com/dorianeSF/ELK-Stack-Project/main/Ansible/ansible_playbooks/install-elk.yml > /etc/ansible/roles/install-elk.yml
-- Edit the playbook: 
+- Edit the Playbook: 
   - nano /etc/ansible/roles/install-elk.yml
 - Configure Ansible's inventory in the hosts file: 
   - nano /etc/ansible/hosts
-- Run the playbook to launch the container: 
+- Run the Playbook to launch the container: 
   - ansible-playbook install-elk.yml
 
 ### Filebeat
-- Download the playbook: 
+- Download the Playbook: 
   - curl https://raw.githubusercontent.com/dorianeSF/ELK-Stack-Project/main/Ansible/ansible_playbooks/filebeat-playbook.yml > /etc/ansible/roles/filebeat-playbook.yml
-- Edit the playbook: 
+- Edit the Playbook: 
   - nano /etc/ansible/roles/filebeat-playbook.yml
 - Download the config file: 
   - curl https://raw.githubusercontent.com/dorianeSF/ELK-Stack-Project/main/Ansible/config_files/filebeat-config.yml > /etc/ansible/files/filebeat-config.yml
 - Edit the config file: nano /etc/ansible/files/filebeat-config.yml
   - Under "output.elasticsearch:" enter your ELK Public IP in place of the hosts IP
-- Run the playbook: 
+- Run the Playbook: 
   - ansible-plabook filebeat-playbook.yml
 
 ### Metricbeat
-- Download the playbook: 
+- Download the Playbook: 
   - curl https://raw.githubusercontent.com/dorianeSF/ELK-Stack-Project/main/Ansible/ansible_playbooks/metricbeat-playbook.yml > /etc/ansible/roles/metricbeat-playbook.yml
-- Edit the playbook: 
+- Edit the Playbook: 
   - nano /etc/ansible/roles/metricbeat-playbook.yml
 - Download the config file: 
   - curl https://raw.githubusercontent.com/dorianeSF/ELK-Stack-Project/main/Ansible/config_files/metricbeat-config.yml > /etc/ansible/files/metricbeat-config.yml
 - Edit the config file: nano /etc/ansible/files/metricbeat-config.yml
   - Under "output.elasticsearch:" enter your ELK Public IP in place of the hosts IP
-- Run the playbook: 
+- Run the Playbook: 
   - ansible-playbook metricbeat-playbook.yml
