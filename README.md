@@ -1,7 +1,7 @@
 # ELK-Stack
 ## Automated ELK Stack Deployment
 
-This repository dodcuments files, images, and instructions used in configuring the below network:
+This repository documents files, images, and instructions used in configuring the below network:
 
 ![Image of Elk Stack Diagram](Images/DorianeF_ELK-Stack_Diagram.png)
 
